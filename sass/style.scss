@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald:400,600|Sacramento|Source+Sans+Pro:300&subset=latin-ext');
+
+/* Variables */
+
+$color-light: #fff;
+$color-dark: #131212;
+
+$font-logo: 'Sacramento', cursive;
+$font-header: 'Oswald', sans-serif;
+$font-text: 'Source Sans Pro', sans-serif;
+
+/* Global */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url('https://i.postimg.cc/MKDFsnLc/pexels-pixabay-66869.jpg');
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: $font-text;
+  color: $color-dark;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 22px;
+  text-transform: uppercase;
+  font-family: $font-header;
+  font-weight: 600;
+  span {
+    text-transform: none;
+    font-weight: 400;
+    color: lighten($color-dark, 20%);
+  }
+}
+
+/* Layout */
+
+.wrapper {
+  display: flex;
+  margin-left: 10px;
+}
+
+.sidebar {
+  flex: 1 0 0;
+}
+
+.posts {
+  flex: 2 0 0;
+}
+
+.sidebar, .posts {
+  background-color: white;
+  color: black;
+  margin-right: 10px;
+  padding: 40px;
+  border: 5px solid $color-dark;
+  border-radius: 5px;
+}
+
+a {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+
+}
+
+/* Logo */
+
+.logo {
+  font-family: $font-logo;
+  font-weight: 400;
+  font-size: 104px;
+  line-height: 1;
+  text-align: center;
+}
+
+/* Lists */
+
+.list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  .active {
+    font-weight: bold;
+  }
+}
+
+.list-horizontal {
+  li {
+    display: inline-block;
+  }
+}
+
+/* Authors */
+
+.authors {
+  li {
+    margin-bottom: 12px;
+  }
+}
+
+/* Post */
+
+.post {
+  display: none;
+  &.active {
+    display: block;
+  }
+}
+
+.post-author {
+  font-style: italic;
+}
+
+.post-tags {
+  display: flex;
+  p {
+    margin: 0 10px 0 0;
+  }
+}
+.list li {
+  border-bottom: solid black;
+}
+/*Class frequency of tags styles*/
+
+.side-left{
+  background: fixed;
+  font-size: 30px;
+  text-align: center;
+}
+
+.tag-size {
+  font-family: "sacramento", cursive;
+  color: #333;
+  display: inline;
+  cursor:grab;
+  text-decoration: none;
+  text-shadow: 5px 4px #ccc;
+  text-transform: uppercase;
+
+  &-1 {
+    font-size: 28px;
+  }
+  &-2 {
+    font-size: 30px;
+  }
+  &-3 {
+    font-size: 35px;
+  }
+  &-4 {
+    font-size: 40px;
+  }
+  &-5 {
+    font-size: 45px;
+  }
+}
+
+.list.tags li:hover {
+  transition: all 1s;
+  transform: rotate3d(1, 1, 1, 360deg);
+  border-bottom: none;
+}
+
+
