@@ -164,3 +164,34 @@ window.addEventListener('keyup', function (event) {
     p2Action = STOP_ACTION;
   }
 });
+
+//functions for paddle sensitive borders
+
+function coerceIn(value, min, max) {
+  if (value <= min) {
+    return min;
+  } else if(value >= max) {
+    return max;
+  } else {
+    return value;
+  }
+}
+
+function coercePaddle(paddleY) {
+  const minPaddleY = 0;
+  const maxPaddleY = CANVAS_HEIGHT - PADDLE_HEIGHT;
+  return coerceIn(paddleY, minPaddleY, maxPaddleY);
+}
+
+function movePaddles() {
+  if (p1Action === UP_ACTION) {
+    p1PaddleY = coercePaddle(p1PaddleY - PADDLE_STEP);
+  } else if (p1Action === DOWN_ACTION) {
+    p1PaddleY = coercePaddle(p1PaddleY + PADDLE_STEP);
+  }
+  if (p2Action === UP_ACTION) {
+    p2PaddleY = coercePaddle(p2PaddleY - PADDLE_STEP);
+  } else if (p2Action === DOWN_ACTION) {
+    p2PaddleY = coercePaddle(p2PaddleY + PADDLE_STEP);
+  }
+}
