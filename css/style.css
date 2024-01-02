@@ -1,3 +1,18 @@
-.palette{background-color:#cbefe3}
+.palette {
+ background-image: url('https://i.postimg.cc/K8FdNMKR/pexels-tik-rudari-16140853.jpg');
+ background-position: center center;
+background-size: cover;
+}
+
+body {
+    background-color: black;
+}
+
+.menu {
+    color: white;
+    border: solid;
+    border-color: whitesmoke;
+    text-align: center;
+}
 
 /*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInN0eWxlLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxTQUFTLHdCQUF3QiIsImZpbGUiOiJzdHlsZS5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIucGFsZXR0ZXtiYWNrZ3JvdW5kLWNvbG9yOiNjYmVmZTN9XG4iXX0= */

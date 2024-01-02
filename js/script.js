@@ -45,10 +45,12 @@ const UP_ACTION = "up";
 const DOWN_ACTION = "down";
 const STOP_ACTION = "stop";
 
+//Palette
+canvas.classList.add("palette");
+
 function drawPaddle(x, y) {
   ctx.fillRect(x, y, PADDLE_WIDTH, PADDLE_HEIGHT);
 }
-ctx.fillStyle = 'grey';
 
 
 //Result
@@ -67,7 +69,7 @@ function drawCircle(x, y, r) {
   ctx.closePath();
   ctx.fill();
 }
-ctx.fillStyle = "green"
+ctx.fillStyle = "white"
 
 
 function drawBall(x, y) {
