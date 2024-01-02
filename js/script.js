@@ -12,14 +12,14 @@ myElem.style='border:10px solid';
 const CANVAS_HEIGHT = canvas.height; 
 const CANVAS_WIDTH = canvas.width; 
 
-const BOARD_Y = 50; // both results
-const BOARD_P1_X = 300; // x player P1 points
-const BOARD_P2_X = 500; // x player P2 points
+const BOARD_Y = 70; // both results
+const BOARD_P1_X = 650; // x player P1 points
+const BOARD_P2_X = 800; // x player P2 points
 
 const PADDLE_WIDTH = 20; 
 const PADDLE_HEIGHT = 100; 
 const PADDLE_P1_X = 10; // first P1 player palette x position
-const PADDLE_P2_X = 770; // first P2 player palette x position
+const PADDLE_P2_X = 1420; // first P2 player palette x position
 const PADDLE_START_Y = (CANVAS_HEIGHT - PADDLE_HEIGHT) / 2;
 const PADDLE_START_X = (CANVAS_WIDTH - PADDLE_WIDTH) / 2;
 // first y position of both paddles
