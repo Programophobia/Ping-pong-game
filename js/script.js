@@ -101,11 +101,6 @@ function drawState() {
   drawPaddle(PADDLE_P2_X, p2PaddleY);
 }
 
-function updateState() {
-  movePaddles();
-  ballX = ballX + ballDX;
-  ballY = ballY + ballDY;
-}
 
 function updateAndDrawState() {
   if (paused) return;
@@ -207,3 +202,38 @@ window.addEventListener('keydown', function (event) {
     paused = !paused;
   }
 });
+
+//Ball movement
+
+function moveBallByStep() {
+  ballX += ballDX;
+  ballY += ballDY;
+}
+function moveBallToStart() {
+  ballX = BALL_START_X;
+  ballY = BALL_START_Y;
+}
+
+function ballIsOutsideOnLeft() {
+  return ballX + BALL_R < 0;
+}
+
+function ballIsOutsideOnRight() {
+  return ballX - BALL_R > CANVAS_WIDTH;
+}
+
+function moveBall() {
+  if (ballIsOutsideOnLeft()) {
+    moveBallToStart();
+    p2Points++;
+  } else if (ballIsOutsideOnRight()) {
+    moveBallToStart();
+    p1Points++;
+  }
+  moveBallByStep();
+}
+
+function updateState() {
+  moveBall();
+  movePaddles();
+}
