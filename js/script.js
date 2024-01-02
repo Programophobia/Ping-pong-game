@@ -230,10 +230,48 @@ function moveBall() {
     moveBallToStart();
     p1Points++;
   }
+  if (shouldBounceBallFromTopWall() || shouldBounceBallFromBottomWall()) {
+    bounceBallFromWall();
+  }
+  if (shouldBounceFromLeftPaddle() || shouldBounceFromRightPaddle()) {
+    bounceBallFromPaddle();
+  }
   moveBallByStep();
 }
 
 function updateState() {
   moveBall();
   movePaddles();
+}
+
+function bounceBallFromWall() {
+  ballDY = -ballDY;
+}
+
+function bounceBallFromPaddle() {
+  ballDX = -ballDX;
+}
+
+function shouldBounceBallFromTopWall() {
+  return ballY < BALL_R && ballDY < 0;
+}
+
+function shouldBounceBallFromBottomWall() {
+  return ballY + BALL_R > CANVAS_HEIGHT && ballDY > 0;
+}
+
+function isInBetween(value, min, max) {
+  return value >= min && value <= max;
+}
+
+function isBallOnTheSameHeightAsPaddle(paddleY) {
+  return isInBetween(ballY, paddleY, paddleY + PADDLE_HEIGHT);
+}
+
+function shouldBounceFromLeftPaddle() {
+  return ballDX < 0 && isInBetween(ballX - BALL_R, PADDLE_P1_X, PADDLE_P1_X + PADDLE_WIDTH) && isBallOnTheSameHeightAsPaddle(p1PaddleY);
+}
+
+function shouldBounceFromRightPaddle() {
+  return ballDX > 0 && isInBetween(ballX + BALL_R, PADDLE_P2_X, PADDLE_P2_X + PADDLE_WIDTH) && isBallOnTheSameHeightAsPaddle(p2PaddleY);
 }
