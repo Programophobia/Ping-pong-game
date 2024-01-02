@@ -149,3 +149,18 @@ function movePaddles() {
     p2PaddleY = p2PaddleY + PADDLE_STEP;
   }
 }
+
+window.addEventListener('keyup', function (event) {
+  let code = event.code;
+  if (
+    (code === P1_UP_BUTTON && p1Action === UP_ACTION) ||
+  (code === P1_DOWN_BUTTON && p1Action === DOWN_ACTION)
+  ) {
+    p1Action = STOP_ACTION;
+  } else if (
+    (code === P2_UP_BUTTON && p2Action === UP_ACTION) ||
+  (code === P2_DOWN_BUTTON && p2Action === DOWN_ACTION)
+  ) {
+    p2Action = STOP_ACTION;
+  }
+});
