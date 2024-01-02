@@ -108,6 +108,7 @@ function updateState() {
 }
 
 function updateAndDrawState() {
+  if (paused) return;
   updateState();
   drawState();
 }
@@ -195,3 +196,14 @@ function movePaddles() {
     p2PaddleY = coercePaddle(p2PaddleY + PADDLE_STEP);
   }
 }
+
+const PAUSE_BUTTON = 'Space';
+
+let paused = false;
+
+window.addEventListener('keydown', function (event) {
+  let code = event.code;
+  if (code === PAUSE_BUTTON) {
+    paused = !paused;
+  }
+});
