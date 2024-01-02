@@ -1,9 +1,12 @@
 
-const canvas = document.getElementById("gameCanvas");
+const canvas = document.getElementById('gameCanvas');
 console.log(canvas);
 
-const ctx = canvas.getContext("2d");
+const ctx = canvas.getContext('2d');
 console.log(ctx);
+
+const myElem = document.querySelector('canvas');
+myElem.style='border:10px solid';
 
 // Constants
 const CANVAS_HEIGHT = canvas.height; 
@@ -18,6 +21,7 @@ const PADDLE_HEIGHT = 100;
 const PADDLE_P1_X = 10; // first P1 player palette x position
 const PADDLE_P2_X = 770; // first P2 player palette x position
 const PADDLE_START_Y = (CANVAS_HEIGHT - PADDLE_HEIGHT) / 2;
+const PADDLE_START_X = (CANVAS_WIDTH - PADDLE_WIDTH) / 2;
 // first y position of both paddles
 
 const BALL_R = 15; // ball radius
@@ -31,17 +35,24 @@ const BALL_START_DY = 1.5;
 // first ball speed (axis y)
 const STATE_CHANGE_INTERVAL = 20;
 
-//Palette
-canvas.classList.add("palette");
+//Assigned buttons and printed action
+const PADDLE_STEP = 3;
+const P1_UP_BUTTON = 'KeyQ';
+const P1_DOWN_BUTTON = 'KeyA';
+const P2_UP_BUTTON = 'KeyP';
+const P2_DOWN_BUTTON = 'KeyL';
+const UP_ACTION = "up";
+const DOWN_ACTION = "down";
+const STOP_ACTION = "stop";
 
 function drawPaddle(x, y) {
   ctx.fillRect(x, y, PADDLE_WIDTH, PADDLE_HEIGHT);
 }
-ctx.fillStyle = "grey"
+ctx.fillStyle = 'grey';
 
 
 //Result
-ctx.font = "30px Arial";
+ctx.font = '30px Arial';
 ctx.fillStyle = "Brown"
 
 function drawPoints(text, x){
@@ -57,6 +68,8 @@ function drawCircle(x, y, r) {
   ctx.fill();
 }
 ctx.fillStyle = "green"
+
+
 function drawBall(x, y) {
   drawCircle(x, y, BALL_R);
 }
@@ -73,6 +86,8 @@ let ballDX = BALL_START_DX;
 let ballDY = BALL_START_DY;
 let p1PaddleY = PADDLE_START_Y;
 let p2PaddleY = PADDLE_START_Y;
+let p1PaddleX = PADDLE_START_X;
+let p2PaddleX = PADDLE_START_X;
 let p1Points = 0;
 let p2Points = 0;
 
@@ -87,9 +102,9 @@ function drawState() {
 }
 
 function updateState() {
+  movePaddles();
   ballX = ballX + ballDX;
   ballY = ballY + ballDY;
-
 }
 
 function updateAndDrawState() {
@@ -98,3 +113,39 @@ function updateAndDrawState() {
 }
 
 setInterval(updateAndDrawState, STATE_CHANGE_INTERVAL);
+
+//Movement
+let p1Action = STOP_ACTION;
+let p2Action = STOP_ACTION;
+
+window.addEventListener('keydown', event => {
+  let code = event.code;
+  if (code === P1_UP_BUTTON) {
+    p1Action = UP_ACTION;
+  } else if (code === P1_DOWN_BUTTON) {
+    p1Action = DOWN_ACTION;
+  } else if (code === P2_UP_BUTTON) {
+    p2Action = UP_ACTION;
+  } else if (code === P2_DOWN_BUTTON) {
+    p2Action = DOWN_ACTION;
+  }
+  console.log('down' + event.code);
+});
+
+window.addEventListener('keyup', function(event){
+
+  console.log('up');
+});
+
+function movePaddles() {
+  if (p1Action === UP_ACTION) {
+    p1PaddleY = p1PaddleY - PADDLE_STEP;
+  } else if (p1Action === DOWN_ACTION) {
+    p1PaddleY = p1PaddleY + PADDLE_STEP;
+  }
+  if (p2Action === UP_ACTION && p2PaddleY >= 0) {
+    p2PaddleY = p2PaddleY - PADDLE_STEP;
+  } else if (p2Action === DOWN_ACTION) {
+    p2PaddleY = p2PaddleY + PADDLE_STEP;
+  }
+}
