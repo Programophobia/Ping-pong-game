@@ -1,1 +1,1 @@
-simple-game-pong.netlify.app
+https://simple-game-pong.netlify.app/
